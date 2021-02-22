@@ -1,0 +1,46 @@
+body {
+    background-color: lightgrey;
+}
+
+.wbdv-bg-color {
+    background-color: white;
+}
+.wbdv-sticky-nav-bar {
+    background-color: DeepSkyBlue;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.wbdv-nav-bar-color {
+    background-color: lightgray;
+}
+
+p {
+    color: white;
+    font-weight: 900;
+}
+
+.container {
+    padding-top: 50px;
+}
+
+td {
+    font-size: small;
+}
+
+span {
+    padding-left: 10px;
+}
+
+th {
+    color: grey;
+}
+
+.wbdv-right {
+    position: fixed;
+    bottom: 0;
+    right:0;
+}
+

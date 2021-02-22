@@ -1,0 +1,60 @@
+.wbdv-sticky-nav-bar {
+    background-color: gray;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.wbdv-word-color {
+    color: white;
+}
+p {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+
+span {
+    color: lightgrey;
+    font-weight: bold;
+    font-size: large;
+}
+
+.wbdv-padding {
+    margin-left: 70px;
+}
+
+.wbdv-padding-right {
+    margin-left: 280px;
+}
+
+.wbdv-top {
+    padding-top: 90px;
+}
+
+.wbdv-top1 {
+    padding-top: 30px;
+}
+
+.wbdv-bottom {
+    position: absolute;
+    top: 500px;
+    right: 5%;
+}
+
+.wbdv-padding-button {
+    margin-left: 30px;
+}
+
+.wbdv-list-color {
+    background-color: darkgray;
+}
+
+.wbdv-column {
+    top: 0;
+    left: 0;
+    width: 33%;
+    height: 1500px;
+    background-color: DimGray;
+}
