@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
 import bootstrap from "../images/bootstrap.png";
 import html from "../images/htmlcss.png";
@@ -27,15 +27,36 @@ const CourseCard = (
         updateCourse(newCourse)
     }
 
+    const [imageURL, setImageURL] = useState(null)
+    const changeImage = () => {
+        if (course.title === "Bootstrap") {
+            setImageURL(bootstrap)
+        } else if (course.title === "HTML") {
+            setImageURL(html)
+        } else if (course.title === "Javascript") {
+            setImageURL(js)
+        } else if (course.title === "MySQL") {
+            setImageURL(mysql)
+        } else if (course.title === "Node.js") {
+            setImageURL(node)
+        } else if (course.title === "React.js") {
+            setImageURL(react)
+        } else {
+            setImageURL(social)
+        }
+    }
+    
+    useEffect(() => {
+        changeImage();
+    });
+
     return (
         <>
             <div className="col-4">
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">{course.title}</h5>
-                        <img src={social} style={{height:"200px", width:"250px"}}/>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                            content.</p>
+                        <img src={imageURL} style={{height:"200px", width:"250px"}}/>
                         <Link to="/courses/editor" className="btn btn-primary">
                             {course.title}
                         </Link>
