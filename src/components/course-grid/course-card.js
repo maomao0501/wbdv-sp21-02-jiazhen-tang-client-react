@@ -56,7 +56,7 @@ const CourseCard = (
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">{course.title}</h5>
-                        <img src={imageURL} style={{height:"200px", width:"250px"}} />
+                        <img src={imageURL} className="img-fluid" style={{height:"200px", width:"250px"}} />
                         <Link to="/courses/editor" className="btn btn-primary">
                             {course.title}
                         </Link>
