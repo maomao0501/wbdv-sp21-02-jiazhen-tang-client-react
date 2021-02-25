@@ -1,8 +1,8 @@
 import React from 'react'
-import CourseCard from "./course-card";
+import CourseCard from "../course-grid/course-card";
 import {Link} from "react-router-dom";
-import editor from "../css/editor.css";
-import CourseRow from "./course-row";
+import editor from "../../css/editor.css";
+import CourseRow from "../course-table/course-row";
 
 const CourseGrid = (
     {
@@ -16,7 +16,7 @@ const CourseGrid = (
         {/*    <i className="fas fa-list fa-2x float-right"></i>*/}
         {/*</Link>*/}
         <h3>Course Grid {courses.length}</h3>
-        <div className="container table-responsive-sm ">
+        <div className="container .col-sm|md|lg|xl">
             <table className="table">
                 <thead>
                 <tr>

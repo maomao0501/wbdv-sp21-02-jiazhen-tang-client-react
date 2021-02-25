@@ -1,5 +1,5 @@
 import React from 'react'
-import CourseRow from "./course-row";
+import CourseRow from "../course-table/course-row";
 import {Link} from "react-router-dom";
 
 export default class CourseTable

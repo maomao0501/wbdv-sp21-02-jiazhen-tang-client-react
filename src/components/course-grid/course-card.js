@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
-import bootstrap from "../images/bootstrap.png";
-import html from "../images/htmlcss.png";
-import js from "../images/js.jpg";
-import mysql from "../images/mysql.png";
-import node from "../images/node.png";
-import react from "../images/react.png";
-import social from "../images/social.png";
+import bootstrap from "../../images/bootstrap.png";
+import html from "../../images/htmlcss.png";
+import js from "../../images/js.jpg";
+import mysql from "../../images/mysql.png";
+import node from "../../images/node.png";
+import react from "../../images/react.png";
+import social from "../../images/social.png";
 
 const CourseCard = (
     {
@@ -45,7 +45,7 @@ const CourseCard = (
             setImageURL(social)
         }
     }
-    
+
     useEffect(() => {
         changeImage();
     });
@@ -56,7 +56,7 @@ const CourseCard = (
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">{course.title}</h5>
-                        <img src={imageURL} style={{height:"200px", width:"250px"}}/>
+                        <img src={imageURL} style={{height:"200px", width:"250px"}} />
                         <Link to="/courses/editor" className="btn btn-primary">
                             {course.title}
                         </Link>

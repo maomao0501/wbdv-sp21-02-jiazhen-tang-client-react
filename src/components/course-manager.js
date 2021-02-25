@@ -1,7 +1,7 @@
 import React from 'react'
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
-import CourseEditor from "./course-editor";
+import CourseTable from "../components/course-table/course-table";
+import CourseGrid from "../components/course-grid/course-grid";
+import CourseEditor from "../components/course-editor/course-editor";
 import {Route} from "react-router-dom";
 import courseService, {findAllCourses, deleteCourse} from "../services/course-service";
 import manager from "../css/manager.css";
