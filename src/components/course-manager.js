@@ -123,10 +123,22 @@ class CourseManager extends React.Component {
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
-                <Route path="/courses/editor"
+                {/*<Route path={[  "/courses/editor/:courseId",*/}
+                {/*                "/courses/editor/:courseId/:moduleId",*/}
+                {/*                "/courses/editor/:courseId/:moduleId/:lessonId",*/}
+                {/*                "/courses/editor/:courseId/:moduleId/:lessonId/:topicId"*/}
+                {/*]}*/}
+                {/*       exact={true}*/}
+                {/*       render={(props) => <CourseEditor {...props} />}>*/}
+                {/*</Route>*/}
+                <Route path={[
+                                "/courses/:layout/edit/:courseId",
+                                "/courses/:layout/edit/:courseId/modules/:moduleId",
+                                "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+                                "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]}
+                       exact={true}
                        render={(props) => <CourseEditor {...props} />}>
                 </Route>
-
                 <div className="wbdv-right">
                     <i className="fas fa-plus-circle fa-4x" style={{color:"red"}} onClick={this.addCourse}></i>
                 </div>
