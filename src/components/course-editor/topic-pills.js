@@ -71,7 +71,7 @@ const dtpm = (dispatch) => ({
     //     dispatch({type: "UPDATE_TOPIC", updateTopic: newItem})
     // },
     updateTopic: (topic) => {
-        lessonService.updateLesson(topic._id, topic)
+        topicService.updateLesson(topic._id, topic)
             .then(status => dispatch({
                 type: "UPDATE_TOPIC",
                 topic
