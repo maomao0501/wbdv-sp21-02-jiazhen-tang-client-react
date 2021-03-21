@@ -17,17 +17,6 @@ const widgetReducer = (state = initialState, action) => {
                     action.widget
                 ]
             }
-        // const newTopic = {
-        //     title: "New Topic",
-        //     _id: (new Date()).getTime()
-        // }
-        // return {
-        //     ...state,
-        //     topics: [
-        //         ...state.topics,
-        //         newTopic
-        //     ]
-        // }
         case "DELETE_WIDGET":
             return {
                 ...state,
