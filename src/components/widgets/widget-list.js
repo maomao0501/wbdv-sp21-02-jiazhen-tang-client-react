@@ -92,8 +92,45 @@ const WidgetList = () => {
         </div>
     )
 }
+const stpm = (state) => ({
+    widgets: state.widgetReducer.widgets
+})
+const dtpm = (dispatch) => ({
+    findWidgetsForTopic: (topicId) => {
+        widgetService.findWidgetsForTopic(topicId)
+            .then(widgets => dispatch({
+                type: "FIND_ALL_WIDGETS_FOR_TOPIC",
+                widgets
+            }))
+    },
+    createWidget: (topicId, widget) => {
+        widgetService.createWidget(topicId, {type: "HEADING", size: 2, text: "New Widget"})
+            .then(widget => dispatch({
+                type: "CREATE_WIDGET",
+                widget
+            }))
+    },
 
-export default WidgetList;
+    updateWidget: (widgetId, widget) => {
+        widgetService.updateWidget(widget._id, widget)
+            .then(status => dispatch({
+                type: "UPDATE_WIDGET",
+                widget
+            }))
+    },
+    deleteWidget: (widgetToDelete) => {
+        widgetService.deleteWidget(widgetToDelete._id)
+            .then(status => dispatch({
+                type: "DELETE_WIDGET",
+                widgetToDelete: widgetToDelete
+            }))
+    }
+})
+
+export default connect(stpm, dtpm)(WidgetList)
+
+
+// export default WidgetList;
 
 // const WidgetList = (
 //     {
@@ -103,8 +140,8 @@ export default WidgetList;
 //         deleteWidget,
 //         findWidgetsForTopic
 //     }) => {
-//     const {topicId} = useParams();
-//     // const {layout, courseId, moduleId, lessonId, topicId} = useParams()
+//     // const {topicId} = useParams();
+//     const {layout, courseId, moduleId, lessonId, topicId} = useParams()
 //     // const [widgets, setWidgets] = useState([]);
 //     const [widget, setWidget] = useState({});
 //     useEffect(() => {
@@ -138,6 +175,7 @@ export default WidgetList;
 //                             {
 //                                 _widget.type === "HEADING" &&
 //                                 <HeadingWidget
+//                                     to={`topics/${topicId}`}
 //                                     setWidget={setWidget}
 //                                     editing={_widget.id === widget.id}
 //                                     widget={widget}/>
@@ -192,4 +230,4 @@ export default WidgetList;
 // })
 //
 // export default connect(stpm, dtpm)(WidgetList)
-
+//
