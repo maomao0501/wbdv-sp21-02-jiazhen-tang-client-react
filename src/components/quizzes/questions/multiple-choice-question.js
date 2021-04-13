@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 const MultipleChoiceQuestion = ({question}) => {
     const [yourAnswer, setYourAnswer] = useState("")
+    const [grade, setGrade] = useState("")
     return(
         <div>
             <h5>
@@ -23,7 +24,7 @@ const MultipleChoiceQuestion = ({question}) => {
                             ${yourAnswer === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
                                 <label><input
                                     onClick={() => {
-                                        setYourAnswer(choice)
+                                        setGrade(choice)
                                     }}
                                     type="radio"
                                     name={question._id}/> {choice}</label>
@@ -38,7 +39,8 @@ const MultipleChoiceQuestion = ({question}) => {
             <p>{question.correct}</p>
             <p></p>
             <p>{question.type}</p>
-            <button className="btn btn-success">
+            <button className="btn btn-success"
+                    onClick={()=>{setYourAnswer(grade)}}>
                 Grade
             </button>
         </div>
