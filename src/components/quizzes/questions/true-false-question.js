@@ -13,11 +13,12 @@
 //
 // export default TrueFalseQuestion;
 
-import React, {useState} from "react";
+import React,{useState} from "react";
 
 const TrueFalseQuestion = ({question}) => {
     const [yourAnswer, setYourAnswer] = useState("")
-    return (
+    const [grade, setGrade] = useState("")
+    return(
         <div>
             <h5>{question.question}
                 {
@@ -29,39 +30,39 @@ const TrueFalseQuestion = ({question}) => {
                     <i className="fas fa-times"></i>
                 }
             </h5>
+
             <ul className="list-group">
                 <li className={`list-group-item 
-                ${question.correct === yourAnswer ? 'list-group-item-success' : 'list-group-item-danger'}`}>
-                    <label><input
-                        onClick={() => {
-                            setYourAnswer("true")
-                        }}
-                        type="radio"
-                        name={question._id}/>
-                        {''}
-                        True
+                ${yourAnswer === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
+                    <label>
+                        <input onClick={() => {
+                        setGrade("true")
+                    }}
+                                  type="radio"
+                                  name={question._id}/>
+                                  True
                     </label>
                 </li>
-
                 <li className={`list-group-item 
-                ${question.correct === yourAnswer ? 'list-group-item-success' : 'list-group-item-danger'}`}>
-                    <label><input
-                        onClick={() => {
-                            setYourAnswer("false")
-                        }}
-                        type="radio"
-                        name={question._id}/>
-                        {''}
-                        False
+                ${yourAnswer === question.correct ? 'list-group-item-success' : 'list-group-item-danger'}`}>
+                    <label>
+                        <input onClick={() => {
+                        setGrade("false")
+                    }}
+                               type="radio"
+                               name={question._id}/>
+                               False
                     </label>
                 </li>
             </ul>
             <p>
                 Your answer: {yourAnswer}
             </p>
-            <button className="btn btn-success">
+            <button className="btn btn-success"
+                    onClick={()=>{setYourAnswer(grade)}}>
                 Grade
             </button>
+            <hr/>
         </div>
     )
 }
