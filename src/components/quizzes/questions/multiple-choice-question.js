@@ -38,6 +38,9 @@ const MultipleChoiceQuestion = ({question}) => {
             <p>{question.correct}</p>
             <p></p>
             <p>{question.type}</p>
+            <button className="btn btn-success">
+                Grade
+            </button>
         </div>
     )
 }
