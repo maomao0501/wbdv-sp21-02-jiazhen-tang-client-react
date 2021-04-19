@@ -14,15 +14,16 @@ const WidgetList = () => {
     const [widgets, setWidgets] = useState([]);
     const [widget, setWidget] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
+        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`)
+        // fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
             .then(response => response.json())
             .then(widgets => setWidgets(widgets))
     },[topicId])
 
     const createWidget = () => {
-        fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`, {
             method: 'POST',
-            body: JSON.stringify({type: "HEADING", size: 2, text: "New Widget"}),
+            body: JSON.stringify({type: "PARAGRAPH", size: 2, text: "New Widget"}),
             headers: {
                 "content-type": 'application/json'
             }
@@ -32,14 +33,14 @@ const WidgetList = () => {
     }
 
     const deleteWidget = (id) =>
-        fetch(`http://localhost:8080/api/widgets/${id}`, {
+        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${id}`, {
             method: "DELETE"
         }).then((status) => {
             setWidgets((widgets) => widgets.filter(w => w.id !== id))
         })
 
     const updateWidget = (id, widget) =>
-        fetch(`http://localhost:8080/api/widgets/${id}`, {
+        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${id}`, {
             method: "PUT",
             body: JSON.stringify(widget),
             headers: {

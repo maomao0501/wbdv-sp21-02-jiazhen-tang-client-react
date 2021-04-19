@@ -1,5 +1,5 @@
 export const createWidget = (topicId, widget) =>
-    fetch(`http://localhost:8080/api/topics/${topicId}/widgets`, {
+    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`, {
         method: 'POST',
         body: JSON.stringify(widget),
         headers: {
@@ -11,12 +11,12 @@ export const createWidget = (topicId, widget) =>
 
 
 export const findWidgetsForTopic = (topicId) =>
-    fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
+    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`)
         .then(response => response.json())
         // .then(widgets => setWidgets(widgets))
 
 export const deleteWidget = (widgetId) =>
-    fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${widgetId}`, {
         method: "DELETE"
     })
         .then(response => response.json())
@@ -34,7 +34,7 @@ export const deleteWidget = (widgetId) =>
     //     setWidgets((widgets) => widgets.filter(w => w.id !== id))
     // })
 export const updateWidget = (widgetId, widget) =>
-    fetch(`http://localhost:8080/api/widgets/${widgetId}`, {
+    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${widgetId}`, {
         method: "PUT",
         body: JSON.stringify(widget),
         headers: {

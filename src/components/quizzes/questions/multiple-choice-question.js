@@ -3,6 +3,7 @@ import React, {useState} from "react";
 const MultipleChoiceQuestion = ({question}) => {
     const [yourAnswer, setYourAnswer] = useState("")
     const [grade, setGrade] = useState("")
+
     return(
         <div>
             <h5>
@@ -36,13 +37,13 @@ const MultipleChoiceQuestion = ({question}) => {
             <p>
                 Your answer: {yourAnswer}
             </p>
-            <p>{question.correct}</p>
-            <p></p>
-            <p>{question.type}</p>
-            <button className="btn btn-success"
-                    onClick={()=>{setYourAnswer(grade)}}>
-                Grade
-            </button>
+            {/*<p>{question.correct}</p>*/}
+            {/*<p></p>*/}
+            {/*<p>{question.type}</p>*/}
+            {/*<button className="btn btn-success"*/}
+            {/*        onClick={()=>{setYourAnswer(grade)}}>*/}
+            {/*    Grade*/}
+            {/*</button>*/}
         </div>
     )
 }

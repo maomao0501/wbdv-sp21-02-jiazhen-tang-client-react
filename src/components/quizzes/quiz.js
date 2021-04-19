@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import Question from "./questions/question";
+import quizService from "../../services/quiz-service";
 
 const Quiz = () => {
     const {quizId} = useParams();
@@ -11,6 +12,7 @@ const Quiz = () => {
             .then(response => response.json())
             .then((questions) => {
                 setQuestions(questions)
+                console.log(questions)
             })
     },[])
     return (
@@ -35,6 +37,7 @@ const Quiz = () => {
                     })
                 }
             </ul>
+            <button className="btn btn-success" onClick={()=>{quizService.submitQuiz(quizId,questions)}}>Submit</button>
         </div>
     )
 }

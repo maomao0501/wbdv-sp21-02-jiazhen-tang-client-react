@@ -58,11 +58,11 @@ const TrueFalseQuestion = ({question}) => {
             <p>
                 Your answer: {yourAnswer}
             </p>
-            <button className="btn btn-success"
-                    onClick={()=>{setYourAnswer(grade)}}>
-                Grade
-            </button>
-            <hr/>
+            {/*<button className="btn btn-success"*/}
+            {/*        onClick={()=>{setYourAnswer(grade)}}>*/}
+            {/*    Grade*/}
+            {/*</button>*/}
+            {/*<hr/>*/}
         </div>
     )
 }
