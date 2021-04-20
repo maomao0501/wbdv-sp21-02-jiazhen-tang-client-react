@@ -58,9 +58,9 @@ const WidgetList = () => {
     return (
         <div>
             <i onClick={() => createWidget(document.getElementById("widgetTypeList").value)} className="fas fa-plus float-right fa-2x"></i>
-            <select id="widgetTypeList" className="float-right">
-                <option value={"HEADING"}>Heading</option>
-                <option value={"PARAGRAPH"}>Paragraph</option>
+            <select class="btn btn-success dropdown-toggle float-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="widgetTypeList">
+                <option className="dropdown-item" value={"HEADING"}>Heading</option>
+                <option className="dropdown-item" value={"PARAGRAPH"}>Paragraph</option>
             </select>
             <h1>Widget List</h1>
             <ul className="list-group">
