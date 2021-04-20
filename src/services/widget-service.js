@@ -1,5 +1,7 @@
+const WIDGETS_URL = "https://wbdv-generic-server.herokuapp.com/api/jiazhentang/widgets";
+const TOPICS_URL = "https://wbdv-generic-server.herokuapp.com/api/jiazhentang/topics";
 export const createWidget = (topicId, widget) =>
-    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`, {
+    fetch(`${TOPICS_URL}/${topicId}/widgets`, {
         method: 'POST',
         body: JSON.stringify(widget),
         headers: {
@@ -11,12 +13,12 @@ export const createWidget = (topicId, widget) =>
 
 
 export const findWidgetsForTopic = (topicId) =>
-    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`)
+    fetch(`${TOPICS_URL}/${topicId}/widgets`)
         .then(response => response.json())
         // .then(widgets => setWidgets(widgets))
 
 export const deleteWidget = (widgetId) =>
-    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${widgetId}`, {
+    fetch(`${WIDGETS_URL}/${widgetId}`, {
         method: "DELETE"
     })
         .then(response => response.json())
@@ -34,7 +36,7 @@ export const deleteWidget = (widgetId) =>
     //     setWidgets((widgets) => widgets.filter(w => w.id !== id))
     // })
 export const updateWidget = (widgetId, widget) =>
-    fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${widgetId}`, {
+    fetch(`${WIDGETS_URL}/${widgetId}`, {
         method: "PUT",
         body: JSON.stringify(widget),
         headers: {

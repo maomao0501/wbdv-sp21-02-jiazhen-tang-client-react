@@ -6,6 +6,7 @@ import quizService from "../../services/quiz-service";
 const Quiz = () => {
     const {quizId} = useParams();
     const [questions, setQuestions] = useState([]);
+    const [attempts, setAttempts] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:4000/api/quizzes/${quizId}/questions
 `)
@@ -13,6 +14,13 @@ const Quiz = () => {
             .then((questions) => {
                 setQuestions(questions)
                 console.log(questions)
+            })
+        fetch(`http://localhost:4000/api/quizzes/${quizId}/attempts
+`)
+            .then(response => response.json())
+            .then((attempts) => {
+                setAttempts(attempts)
+                console.log(attempts)
             })
     },[])
     return (
@@ -38,6 +46,17 @@ const Quiz = () => {
                 }
             </ul>
             <button className="btn btn-success" onClick={()=>{quizService.submitQuiz(quizId,questions)}}>Submit</button>
+            <ol>
+                {
+                    attempts.map((attempt) => {
+                        return (
+                            <li>
+                                <h4>Score: {attempt.score}</h4>
+                            </li>
+                        )
+                    })
+                }
+            </ol>
         </div>
     )
 }

@@ -9,21 +9,22 @@ import widgetService from "../../services/widget-service";
 import ListWidget from "./list-widget";
 import ImageWidget from "./image-widget";
 
+const BACKEND_URL = "https://wbdv-generic-server.herokuapp.com/api/jiazhentang";
 const WidgetList = () => {
     const {topicId} = useParams();
     const [widgets, setWidgets] = useState([]);
     const [widget, setWidget] = useState({});
     useEffect(() => {
-        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`)
+        fetch(`${BACKEND_URL}/topics/${topicId}/widgets`)
         // fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
             .then(response => response.json())
             .then(widgets => setWidgets(widgets))
     },[topicId])
 
-    const createWidget = () => {
-        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/topics/${topicId}/widgets`, {
+    const createWidget = (widget_type) => {
+        fetch(`${BACKEND_URL}/topics/${topicId}/widgets`, {
             method: 'POST',
-            body: JSON.stringify({type: "PARAGRAPH", size: 2, text: "New Widget"}),
+            body: JSON.stringify({type: widget_type, size: 2, text: "New Widget"}),
             headers: {
                 "content-type": 'application/json'
             }
@@ -33,22 +34,22 @@ const WidgetList = () => {
     }
 
     const deleteWidget = (id) =>
-        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${id}`, {
+        fetch(`${BACKEND_URL}/widgets/${id}`, {
             method: "DELETE"
         }).then((status) => {
-            setWidgets((widgets) => widgets.filter(w => w.id !== id))
+            setWidgets((widgets) => widgets.filter(w => w._id !== id))
         })
 
     const updateWidget = (id, widget) =>
-        fetch(`https://wbdv-sp21-02-jiazhen-tang.herokuapp.com/api/widgets/${id}`, {
+        fetch(`${BACKEND_URL}/widgets/${id}`, {
             method: "PUT",
             body: JSON.stringify(widget),
             headers: {
-                "content-type": 'application/json'
+                    "content-type": 'application/json'
             }
         }).then((status) => {
             setWidget({})
-            setWidgets((widgets) => widgets.map(w => w.id === id ? widget : w))
+            setWidgets((widgets) => widgets.map(w => w._id === id ? widget : w))
         })
 
 
@@ -56,23 +57,27 @@ const WidgetList = () => {
 
     return (
         <div>
-            <i onClick={createWidget} className="fas fa-plus float-right fa-2x"></i>
+            <i onClick={() => createWidget(document.getElementById("widgetTypeList").value)} className="fas fa-plus float-right fa-2x"></i>
+            <select id="widgetTypeList" className="float-right">
+                <option value={"HEADING"}>Heading</option>
+                <option value={"PARAGRAPH"}>Paragraph</option>
+            </select>
             <h1>Widget List</h1>
             <ul className="list-group">
                 {
                     widgets.map(_widget =>
-                        <li key={_widget.id} className="list-group-item">
+                        <li key={_widget._id} className="list-group-item">
                             {
-                                _widget.id === widget.id &&
+                                _widget._id === widget._id &&
                                     <>
-                                        <i onClick={() => deleteWidget(_widget.id)} className="fas fa-trash float-right"></i>
+                                        <i onClick={() => deleteWidget(_widget._id)} className="fas fa-trash float-right"></i>
                                         <i onClick={() => {
-                                            updateWidget(_widget.id, widget)
+                                            updateWidget(_widget._id, widget)
                                         }} className="fas fa-check float-right"></i>
                                     </>
                             }
                             {
-                                _widget.id !== widget.id &&
+                                _widget._id !== widget._id &&
                                     <i onClick={() => setWidget(_widget)} className="fas fa-cog float-right"></i>
 
                             }
@@ -81,28 +86,28 @@ const WidgetList = () => {
                                 _widget.type === "HEADING" &&
                                 <HeadingWidget
                                     setWidget={setWidget}
-                                    editing={_widget.id === widget.id}
+                                    editing={_widget._id === widget._id}
                                     widget={widget}/>
                             }
                             {
                                 _widget.type === "PARAGRAPH" &&
                                 <ParagraphWidget
                                     setWidget={setWidget}
-                                    editing={_widget.id === widget.id}
+                                    editing={_widget._id === widget._id}
                                     widget={widget}/>
                             }
                             {
                                 _widget.type === "LIST" &&
                                 <ListWidget
                                     setWidget={setWidget}
-                                    editing={_widget.id === widget.id}
+                                    editing={_widget._id === widget._id}
                                     widget={_widget}/>
                             }
                             {
                                 _widget.type === "IMAGE" &&
                                 <ImageWidget
                                     setWidget={setWidget}
-                                    editing={_widget.id === widget.id}
+                                    editing={_widget._id === widget._id}
                                     widget={_widget}/>
                             }
                         </li>
