@@ -5,7 +5,8 @@ const QuizzesList = () => {
     const {courseId} = useParams();
     const [quizzes, setQuizzes] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:4000/api/quizzes")
+        fetch("https://wbdv-sp21-02-backend.herokuapp.com/api/quizzes")
+        // fetch("http://localhost:4000/api/quizzes")
             .then(response => response.json())
             .then((quizzes) => {
                 setQuizzes(quizzes)

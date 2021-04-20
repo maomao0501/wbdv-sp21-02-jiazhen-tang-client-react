@@ -2,21 +2,26 @@ import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import Question from "./questions/question";
 import quizService from "../../services/quiz-service";
+const QUIZZES_URL = 'https://wbdv-sp21-02-backend.herokuapp.com/api/quizzes';
 
 const Quiz = () => {
     const {quizId} = useParams();
     const [questions, setQuestions] = useState([]);
     const [attempts, setAttempts] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:4000/api/quizzes/${quizId}/questions
+        fetch(`${QUIZZES_URL}/${quizId}/questions
 `)
+//         fetch(`http://localhost:4000/api/quizzes/${quizId}/questions
+// `)
             .then(response => response.json())
             .then((questions) => {
                 setQuestions(questions)
                 console.log(questions)
             })
-        fetch(`http://localhost:4000/api/quizzes/${quizId}/attempts
+        fetch(`${QUIZZES_URL}/${quizId}/attempts
 `)
+//         fetch(`http://localhost:4000/api/quizzes/${quizId}/attempts
+// `)
             .then(response => response.json())
             .then((attempts) => {
                 setAttempts(attempts)
